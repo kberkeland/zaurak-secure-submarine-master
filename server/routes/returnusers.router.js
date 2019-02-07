@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     if (req.isAuthenticated()) {
         let queryText = `SELECT "username" FROM "person"
                          ORDER BY "username";`;
-        pool.query(queryText,[req.user.clearance_level])
+        pool.query(queryText)
             .then(results => res.send(results.rows))
             .catch(error => {
                 console.log('Error making SELECT for users:', error);
